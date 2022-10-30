@@ -1,18 +1,6 @@
 import React from 'react';
 
-const Modal = ({ isCorrect, turn, solution, disabled }) => {
-  if (disabled) {
-    return (
-      <div className="modal">
-        <div>
-          <h1>Can't be opened!</h1>
-          <p className="solution">Not Support</p>
-          <p>Please open in desktop :D</p>
-        </div>
-      </div>
-    );
-  }
-
+const Modal = ({ isCorrect, turn, solution }) => {
   return (
     <div className="modal">
       {isCorrect ? (
