@@ -72,7 +72,8 @@ const useWordle = (solution) => {
   };
 
   const handleKeyup = (e) => {
-    if (e.key === 'Enter') {
+    let key = e.key ? e.key : e.target.textContent;
+    if (key === 'Enter') {
       if (turn > 5) {
         window.alert('You used all your guesses');
         return;
@@ -89,50 +90,23 @@ const useWordle = (solution) => {
       addNewGuess(formatted);
     }
 
-    if (e.key === 'Backspace') {
+    if (key === 'Backspace') {
       setCurrentGuess((prev) => {
         return prev.slice(0, -1);
       });
       return;
     }
 
-    if (/^[A-Za-z]$/.test(e.key)) {
+    if (/^[A-Za-z]$/.test(key)) {
       if (currentGuess.length < 5) {
         setCurrentGuess((prev) => {
-          return prev + e.key;
+          return prev + key;
         });
       }
     }
   };
 
-  const handleClick = (e) => {
-    if (e.target.textContent === 'Enter') {
-      if (turn > 5) {
-        window.alert('You used all your guesses');
-        return;
-      }
-      if (history.includes(currentGuess)) {
-        window.alert('You already tried that word');
-        return;
-      }
-      if (currentGuess.length !== 5) {
-        window.alert('Word must be 5 chars long');
-        return;
-      }
-      const formatted = formatGuess();
-      addNewGuess(formatted);
-    }
-
-    if (/^[A-Za-z]$/.test(e.target.textContent)) {
-      if (currentGuess.length < 5) {
-        setCurrentGuess((prev) => {
-          return prev + e.target.textContent;
-        });
-      }
-    }
-  };
-
-  return { turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup, handleClick };
+  return { turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup };
 };
 
 export default useWordle;

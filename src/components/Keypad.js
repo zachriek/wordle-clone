@@ -23,6 +23,9 @@ const Keypad = ({ usedKeys, handleClick }) => {
       <div className="enter" onClick={handleClick}>
         Enter
       </div>
+      <div className="backspace" onClick={handleClick}>
+        Backspace
+      </div>
     </div>
   );
 };

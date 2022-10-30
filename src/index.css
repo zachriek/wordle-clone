@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html::-webkit-scrollbar {
   width: 1rem;
 }
@@ -11,7 +17,6 @@ body {
   text-align: center;
   font-size: 1em;
   font-family: verdana;
-  margin: 0;
 }
 
 h1 {
@@ -119,6 +124,14 @@ h1 {
   width: 80px;
   background: #ff004c;
   color: #fff;
+}
+
+.keypad > div.backspace {
+  width: 80px;
+  font-size: 12px;
+  background: #eee;
+  color: #ff004c;
+  border: 1px solid #ff004c;
 }
 
 .modal {
