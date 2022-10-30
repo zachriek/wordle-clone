@@ -33,6 +33,7 @@ const Wordle = ({ solution }) => {
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
       <Keypad usedKeys={usedKeys} />
       {showModal ? <Modal isCorrect={isCorrect} turn={turn} solution={solution} /> : null}
+      <input type="text" style={{ opacity: 0 }} autoFocus />
     </>
   );
 };
