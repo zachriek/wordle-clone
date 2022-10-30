@@ -5,24 +5,8 @@ import Keypad from './Keypad';
 import Modal from './Modal';
 
 const Wordle = ({ solution }) => {
-  const { currentGuess, handleKeyup, guesses, isCorrect, turn, usedKeys } = useWordle(solution);
+  const { currentGuess, handleKeyup, handleClick, guesses, isCorrect, turn, usedKeys } = useWordle(solution);
   const [showModal, setShowModal] = useState(false);
-  const [showKeypad, setShowKeypad] = useState(true);
-
-  const windowResize = () => {
-    if (window.innerWidth > 768) {
-      setShowKeypad(true);
-    } else if (window.innerWidth <= 768) {
-      setShowKeypad(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', windowResize);
-    windowResize();
-
-    return () => window.removeEventListener('resize', windowResize);
-  }, []);
 
   useEffect(() => {
     window.addEventListener('keyup', handleKeyup);
@@ -47,8 +31,8 @@ const Wordle = ({ solution }) => {
   return (
     <>
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
-      {showKeypad ? <Keypad usedKeys={usedKeys} /> : <Modal disabled />}
       {showModal ? <Modal isCorrect={isCorrect} turn={turn} solution={solution} /> : null}
+      <Keypad usedKeys={usedKeys} handleClick={handleClick} />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { lettersData } from '../utils/data';
 
-const Keypad = ({ usedKeys }) => {
+const Keypad = ({ usedKeys, handleClick }) => {
   const [letters, setLetters] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Keypad = ({ usedKeys }) => {
         ? letters.map((letter, index) => {
             const color = usedKeys[letter.key];
             return (
-              <div key={index} className={color}>
+              <div key={index} className={color} onClick={handleClick}>
                 {letter.key}
               </div>
             );

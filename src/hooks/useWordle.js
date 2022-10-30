@@ -105,7 +105,30 @@ const useWordle = (solution) => {
     }
   };
 
-  return { turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup };
+  const handleClick = (e) => {
+    if (currentGuess.length === 5) {
+      if (turn > 5) {
+        window.alert('You used all your guesses');
+        return;
+      }
+      if (history.includes(currentGuess)) {
+        window.alert('You already tried that word');
+        return;
+      }
+      const formatted = formatGuess();
+      addNewGuess(formatted);
+    }
+
+    if (/^[A-Za-z]$/.test(e.target.textContent)) {
+      if (currentGuess.length < 5) {
+        setCurrentGuess((prev) => {
+          return prev + e.target.textContent;
+        });
+      }
+    }
+  };
+
+  return { turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup, handleClick };
 };
 
 export default useWordle;
