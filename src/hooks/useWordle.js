@@ -74,15 +74,15 @@ const useWordle = (solution) => {
   const handleKeyup = (e) => {
     if (e.key === 'Enter') {
       if (turn > 5) {
-        console.log('You used all your guesses');
+        window.alert('You used all your guesses');
         return;
       }
       if (history.includes(currentGuess)) {
-        console.log('You already tried that word');
+        window.alert('You already tried that word');
         return;
       }
       if (currentGuess.length !== 5) {
-        console.log('Word must be 5 chars long');
+        window.alert('Word must be 5 chars long');
         return;
       }
       const formatted = formatGuess();

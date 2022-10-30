@@ -28,10 +28,6 @@ const Wordle = ({ solution }) => {
     return () => window.removeEventListener('keyup', handleKeyup);
   }, [handleKeyup, isCorrect, turn]);
 
-  useEffect(() => {
-    console.log(solution);
-  }, [solution]);
-
   return (
     <>
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />

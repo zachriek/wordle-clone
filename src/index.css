@@ -1,4 +1,13 @@
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #333;
+}
+
 body {
+  overflow-x: hidden;
   text-align: center;
   font-size: 1em;
   font-family: verdana;
