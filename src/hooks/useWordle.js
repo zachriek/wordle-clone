@@ -106,13 +106,17 @@ const useWordle = (solution) => {
   };
 
   const handleClick = (e) => {
-    if (currentGuess.length === 5) {
+    if (e.target.textContent === 'Enter') {
       if (turn > 5) {
         window.alert('You used all your guesses');
         return;
       }
       if (history.includes(currentGuess)) {
         window.alert('You already tried that word');
+        return;
+      }
+      if (currentGuess.length !== 5) {
+        window.alert('Word must be 5 chars long');
         return;
       }
       const formatted = formatGuess();

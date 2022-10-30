@@ -20,6 +20,9 @@ const Keypad = ({ usedKeys, handleClick }) => {
             );
           })
         : null}
+      <div className="enter" onClick={handleClick}>
+        Enter
+      </div>
     </div>
   );
 };
