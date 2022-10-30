@@ -14,17 +14,19 @@ const Keypad = ({ usedKeys, handleClick }) => {
         ? letters.map((letter, index) => {
             const color = usedKeys[letter.key];
             return (
-              <div key={index} className={color} onClick={handleClick}>
+              <div key={index} className={`pad ${color}`} onClick={handleClick}>
                 {letter.key}
               </div>
             );
           })
         : null}
-      <div className="enter" onClick={handleClick}>
-        Enter
-      </div>
-      <div className="backspace" onClick={handleClick}>
-        Backspace
+      <div className="keypad-action">
+        <div className="pad backspace" onClick={handleClick}>
+          Backspace
+        </div>
+        <div className="pad enter" onClick={handleClick}>
+          Enter
+        </div>
       </div>
     </div>
   );
